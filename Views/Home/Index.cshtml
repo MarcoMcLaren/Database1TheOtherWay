@@ -1,0 +1,40 @@
+﻿@model IEnumerable<INF272DB1StudentFiles2022.Models.DestinationModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h1 class="display-4">SA Tourist Destinations</h1>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Website)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Website)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "Update", new { id=item.ID }) |
+           
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
