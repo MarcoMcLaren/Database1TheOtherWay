@@ -51,7 +51,7 @@ namespace INF272DB1StudentFiles2022.Models
                 currConnection = new SqlConnection(conString);
                 currConnection.Open();
             }
-            catch (Exception exc)
+            catch 
             {
                 status = false;
             }
@@ -79,7 +79,7 @@ namespace INF272DB1StudentFiles2022.Models
                 closeConnection();
                 status = true;
             }
-            catch (Exception e)
+            catch 
             {
                 status = false;
             }
@@ -90,7 +90,7 @@ namespace INF272DB1StudentFiles2022.Models
             return status;
         }
 
-        public bool updateDest(DestinationModel someDest)
+        public void updateDest(DestinationModel someDest)
         {
             openConnection();
             String cmd = "update TouristSites set Name = '" + someDest.Name + "', Website = '" + someDest.Website + "' where id = " + someDest.ID + ";";
@@ -102,9 +102,9 @@ namespace INF272DB1StudentFiles2022.Models
         public void createDest(DestinationModel someDest)
         {
              openConnection();
-            String cmd = "INSERT INTO " + someDest;
+            String cmd = "INSERT INTO TouristSites(Name, Website) VALUES('" + someDest.Name + "', '" + someDest.Website + "');";
             SqlCommand command = new SqlCommand(cmd, currConnection);
-            command.ExecuteNonQuery();
+            command.ExecuteNonQuery(); /////////iets hier werk nie
             closeConnection(); 
         }
 
